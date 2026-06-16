@@ -51,40 +51,40 @@ def estimator():
     plot_l = float(st.number_input("Plot length (m): "))
     plot_w = float(st.number_input("Plot width (m): "))
 
-    floors = int(input("Number of floors: "))
-    rooms = int(input("Number of rooms: "))
-    bathrooms = int(input("Number of bathrooms: "))
+    floors = int(st.number_input("Number of floors: "))
+    rooms = int(st.number_input("Number of rooms: "))
+    bathrooms = int(st.number_input("Number of bathrooms: "))
 
-    staircase_area = float(input("Staircase area (sq m): "))
-    balcony_area = float(input("Balcony area (sq m): "))
+    staircase_area = float(st.number_input("Staircase area (sq m): "))
+    balcony_area = float(st.number_input("Balcony area (sq m): "))
 
-    wall_h = float(input("Wall height (m): "))
-    wall_t = float(input("Wall thickness (m): "))
+    wall_h = float(st.number_input("Wall height (m): "))
+    wall_t = float(st.number_input("Wall thickness (m): "))
 
-    slab_t = float(input("Slab thickness (m): "))
+    slab_t = float(st.number_input("Slab thickness (m): "))
 
-    steel_dia = float(input("Steel diameter (mm): "))
-    steel_len = float(input("Steel length (m): "))
+    steel_dia = float(st.number_input("Steel diameter (mm): "))
+    steel_len = float(st.number_input("Steel length (m): "))
 
-    doors = int(input("Number of doors: "))
-    windows = int(input("Number of windows: "))
-    ventilators = int(input("Number of ventilators: "))
+    doors = int(st.number_input("Number of doors: "))
+    windows = int(st.number_input("Number of windows: "))
+    ventilators = int(st.number_input("Number of ventilators: "))
 
-    wood_area = float(input("Woodwork area (sq ft): "))
+    wood_area = float(st.number_input("Woodwork area (sq ft): "))
 
-    switch_points = int(input("Switch points: "))
-    fan_points = int(input("Fan points: "))
-    light_points = int(input("Light points: "))
-    socket_points = int(input("Socket points: "))
+    switch_points = int(st.number_input("Switch points: "))
+    fan_points = int(st.number_input("Fan points: "))
+    light_points = int(st.number_input("Light points: "))
+    socket_points = int(st.number_input("Socket points: "))
 
-    water_points = int(input("Water points: "))
-    drain_points = int(input("Drain points: "))
+    water_points = int(st.number_input("Water points: "))
+    drain_points = int(st.number_input("Drain points: "))
 
-    wire_length = float(input("Wire length (m): "))
-    pipe_length = float(input("Water pipeline length (m): "))
+    wire_length = float(st.number_input("Wire length (m): "))
+    pipe_length = float(st.number_input("Water pipeline length (m): "))
 
-    boundary_length = float(input("Boundary wall length (m): "))
-    gates = int(input("Number of gates: "))
+    boundary_length = float(st.number_input("Boundary wall length (m): "))
+    gates = int(st.number_input("Number of gates: "))
 
     floor_area_m2 = plot_l * plot_w
 
