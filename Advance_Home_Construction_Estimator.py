@@ -1,0 +1,286 @@
+# ===== ADVANCE HOME CONSTRUCTION ESTIMATOR =====
+
+BRICK_RATE = 8
+CEMENT_BAG_RATE = 420
+SAND_RATE = 1200
+STEEL_RATE = 100
+CONCRETE_RATE = 2000
+
+PLASTER_RATE = 18
+PUTTY_RATE = 12
+PRIMER_RATE = 10
+PAINT_RATE = 25
+
+FLOORING_RATE = 80
+TILE_RATE = 180
+
+DOOR_RATE = 6000
+WINDOW_RATE = 3000
+VENTILATOR_RATE = 1500
+
+WOOD_RATE = 1300
+WOOD_LABOUR_RATE = 90
+
+SWITCH_POINT_RATE = 350
+FAN_POINT_RATE = 1200
+LIGHT_POINT_RATE = 800
+SOCKET_POINT_RATE = 500
+
+WATER_POINT_RATE = 500
+DRAIN_POINT_RATE = 400
+
+WIRE_RATE_PER_M = 25
+PIPE_RATE_PER_M = 80
+
+BOUNDARY_WALL_RATE = 1500
+GATE_RATE = 25000
+
+LABOUR_RATE = 250
+
+BRICK_L = 0.19
+BRICK_W = 0.09
+BRICK_H = 0.09
+
+
+def estimator():
+
+    print("\n===== ADVANCE HOME CONSTRUCTION ESTIMATOR =====")
+
+    plot_l = float(input("Plot length (m): "))
+    plot_w = float(input("Plot width (m): "))
+
+    floors = int(input("Number of floors: "))
+    rooms = int(input("Number of rooms: "))
+    bathrooms = int(input("Number of bathrooms: "))
+
+    staircase_area = float(input("Staircase area (sq m): "))
+    balcony_area = float(input("Balcony area (sq m): "))
+
+    wall_h = float(input("Wall height (m): "))
+    wall_t = float(input("Wall thickness (m): "))
+
+    slab_t = float(input("Slab thickness (m): "))
+
+    steel_dia = float(input("Steel diameter (mm): "))
+    steel_len = float(input("Steel length (m): "))
+
+    doors = int(input("Number of doors: "))
+    windows = int(input("Number of windows: "))
+    ventilators = int(input("Number of ventilators: "))
+
+    wood_area = float(input("Woodwork area (sq ft): "))
+
+    switch_points = int(input("Switch points: "))
+    fan_points = int(input("Fan points: "))
+    light_points = int(input("Light points: "))
+    socket_points = int(input("Socket points: "))
+
+    water_points = int(input("Water points: "))
+    drain_points = int(input("Drain points: "))
+
+    wire_length = float(input("Wire length (m): "))
+    pipe_length = float(input("Water pipeline length (m): "))
+
+    boundary_length = float(input("Boundary wall length (m): "))
+    gates = int(input("Number of gates: "))
+
+    floor_area_m2 = plot_l * plot_w
+
+    builtup_m2 = (
+        floor_area_m2 * floors
+        + staircase_area
+        + balcony_area
+    )
+
+    wall_volume = builtup_m2 * wall_h * wall_t
+
+    brick_volume = BRICK_L * BRICK_W * BRICK_H
+
+    bricks = (wall_volume / brick_volume) * 1.10
+
+    mortar = wall_volume * 0.30
+
+    sand = mortar * 0.70
+
+    cement = mortar * 6.5
+
+    slab_volume = builtup_m2 * slab_t
+
+    steel_weight = (steel_dia ** 2 / 162) * steel_len
+
+    plaster_area = builtup_m2 * (
+        3.5 + rooms * 0.2 + bathrooms * 0.3
+    )
+
+    paint_area = plaster_area
+    putty_area = plaster_area
+    primer_area = paint_area
+
+    flooring_area = builtup_m2
+
+    bathroom_tile_area = bathrooms * 20
+        # ===== COST CALCULATIONS =====
+
+    brick_cost = bricks * BRICK_RATE
+    cement_cost = cement * CEMENT_BAG_RATE
+    sand_cost = sand * SAND_RATE
+
+    steel_cost = steel_weight * STEEL_RATE
+    slab_cost = slab_volume * CONCRETE_RATE
+
+    plaster_cost = plaster_area * PLASTER_RATE
+    putty_cost = putty_area * PUTTY_RATE
+    primer_cost = primer_area * PRIMER_RATE
+    paint_cost = paint_area * PAINT_RATE
+
+    flooring_cost = flooring_area * FLOORING_RATE
+    tile_cost = bathroom_tile_area * TILE_RATE
+
+    door_cost = doors * DOOR_RATE
+    window_cost = windows * WINDOW_RATE
+    ventilator_cost = ventilators * VENTILATOR_RATE
+
+    wood_cost = wood_area * WOOD_RATE
+    wood_labour = wood_area * WOOD_LABOUR_RATE
+
+    switch_cost = switch_points * SWITCH_POINT_RATE
+    fan_cost = fan_points * FAN_POINT_RATE
+    light_cost = light_points * LIGHT_POINT_RATE
+    socket_cost = socket_points * SOCKET_POINT_RATE
+
+    wire_cost = wire_length * WIRE_RATE_PER_M
+
+    water_cost = water_points * WATER_POINT_RATE
+    drain_cost = drain_points * DRAIN_POINT_RATE
+    pipe_cost = pipe_length * PIPE_RATE_PER_M
+
+    boundary_cost = boundary_length * BOUNDARY_WALL_RATE
+    gate_cost = gates * GATE_RATE
+
+    labour_cost = builtup_m2 * LABOUR_RATE
+
+    # ===== COST GROUPS =====
+
+    structural_cost = steel_cost + slab_cost
+
+    masonry_cost = (
+        brick_cost +
+        cement_cost +
+        sand_cost
+    )
+
+    finishing_cost = (
+        plaster_cost +
+        putty_cost +
+        primer_cost +
+        paint_cost +
+        flooring_cost +
+        tile_cost
+    )
+
+    electrical_cost = (
+        switch_cost +
+        fan_cost +
+        light_cost +
+        socket_cost +
+        wire_cost
+    )
+
+    plumbing_cost = (
+        water_cost +
+        drain_cost +
+        pipe_cost
+    )
+
+    joinery_cost = (
+        door_cost +
+        window_cost +
+        ventilator_cost +
+        wood_cost +
+        wood_labour
+    )
+
+    external_cost = (
+        boundary_cost +
+        gate_cost
+    )
+
+    total_cost = (
+        structural_cost +
+        masonry_cost +
+        finishing_cost +
+        electrical_cost +
+        plumbing_cost +
+        joinery_cost +
+        external_cost +
+        labour_cost
+    )
+
+    cost_per_sqft = total_cost / (builtup_m2 * 10.764)
+
+    # ===== PROJECT SUMMARY =====
+
+    print("\n========== PROJECT SUMMARY ==========")
+
+    print(f"Plot Area: {floor_area_m2:.2f} m²")
+    print(f"Built-up Area: {builtup_m2:.2f} m²")
+
+    print(f"Floors: {floors}")
+    print(f"Rooms: {rooms}")
+    print(f"Bathrooms: {bathrooms}")
+
+    print(f"Staircase Area: {staircase_area:.2f} m²")
+    print(f"Balcony Area: {balcony_area:.2f} m²")
+
+    # ===== MATERIAL SUMMARY =====
+
+    print("\n========== MATERIAL SUMMARY ==========")
+
+    print(f"Bricks Required : {int(bricks)} Nos")
+    print(f"Cement Required : {cement:.2f} Bags")
+    print(f"Sand Required   : {sand:.2f} m³")
+    print(f"Steel Required  : {steel_weight:.2f} kg")
+    print(f"Concrete Volume : {slab_volume:.2f} m³")
+
+    # ===== COST BREAKDOWN =====
+
+    print("\n========== COST BREAKDOWN ==========")
+
+    print(f"Structural Cost : ₹{structural_cost:.2f}")
+    print(f"Masonry Cost    : ₹{masonry_cost:.2f}")
+    print(f"Finishing Cost  : ₹{finishing_cost:.2f}")
+    print(f"Electrical Cost : ₹{electrical_cost:.2f}")
+    print(f"Plumbing Cost   : ₹{plumbing_cost:.2f}")
+    print(f"Joinery Cost    : ₹{joinery_cost:.2f}")
+    print(f"External Cost   : ₹{external_cost:.2f}")
+    print(f"Labour Cost     : ₹{labour_cost:.2f}")
+
+    # ===== DETAILS =====
+
+    print("\n========== DETAILED ITEMS ==========")
+
+    print(f"Doors           : {doors}")
+    print(f"Windows         : {windows}")
+    print(f"Ventilators     : {ventilators}")
+
+    print(f"Switch Points   : {switch_points}")
+    print(f"Fan Points      : {fan_points}")
+    print(f"Light Points    : {light_points}")
+    print(f"Socket Points   : {socket_points}")
+
+    print(f"Water Points    : {water_points}")
+    print(f"Drain Points    : {drain_points}")
+
+    print(f"Wire Length     : {wire_length:.2f} m")
+    print(f"Pipeline Length : {pipe_length:.2f} m")
+
+    print(f"Boundary Wall   : {boundary_length:.2f} m")
+    print(f"Gates           : {gates}")
+
+    print("\n====================================")
+    print(f"TOTAL COST      : ₹{total_cost:.2f}")
+    print(f"COST PER SQ FT  : ₹{cost_per_sqft:.2f}")
+    print("====================================")
+
+
+estimator()
