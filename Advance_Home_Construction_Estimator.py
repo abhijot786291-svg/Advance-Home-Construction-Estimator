@@ -8,42 +8,42 @@ st.title("🏠 Advance Home Construction Estimator")
 
 # ===== RATES =====
 
-BRICK_RATE = 8
-CEMENT_BAG_RATE = 420
-SAND_RATE = 1200
-STEEL_RATE = 100
-CONCRETE_RATE = 2000
+BRICK_RATE = 12
+CEMENT_BAG_RATE = 390
+SAND_RATE = 1800
+STEEL_RATE = 68
+CONCRETE_RATE = 5500
 
-PLASTER_RATE = 18
-PUTTY_RATE = 12
-PRIMER_RATE = 10
-PAINT_RATE = 25
+PLASTER_RATE = 35
+PUTTY_RATE = 18
+PRIMER_RATE = 15
+PAINT_RATE = 40
 
-FLOORING_RATE = 80
-TILE_RATE = 180
+FLOORING_RATE = 180
+TILE_RATE = 300
 
-DOOR_RATE = 6000
-WINDOW_RATE = 3000
-VENTILATOR_RATE = 1500
+DOOR_RATE = 12000
+WINDOW_RATE = 6000
+VENTILATOR_RATE = 2500
 
-WOOD_RATE = 1300
-WOOD_LABOUR_RATE = 90
+WOOD_RATE = 2200
+WOOD_LABOUR_RATE = 150
 
-SWITCH_POINT_RATE = 350
-FAN_POINT_RATE = 1200
-LIGHT_POINT_RATE = 800
-SOCKET_POINT_RATE = 500
+SWITCH_POINT_RATE = 600
+FAN_POINT_RATE = 1800
+LIGHT_POINT_RATE = 1200
+SOCKET_POINT_RATE = 800
 
-WATER_POINT_RATE = 500
-DRAIN_POINT_RATE = 400
+WATER_POINT_RATE = 900
+DRAIN_POINT_RATE = 700
 
-WIRE_RATE_PER_M = 25
-PIPE_RATE_PER_M = 80
+WIRE_RATE_PER_M = 45
+PIPE_RATE_PER_M = 140
 
-BOUNDARY_WALL_RATE = 1500
-GATE_RATE = 25000
+BOUNDARY_WALL_RATE = 2500
+GATE_RATE = 50000
 
-LABOUR_RATE = 250
+LABOUR_RATE = 550
 
 BRICK_L = 0.19
 BRICK_W = 0.09
@@ -85,6 +85,31 @@ pipe_length = st.number_input("Pipeline length (m)", min_value=0.0)
 
 boundary_length = st.number_input("Boundary wall length (m)", min_value=0.0)
 gates = st.number_input("Number of gates", min_value=0, step=1)
+construction_quality = st.selectbox(
+    "Construction Quality",
+    ["Basic", "Standard", "Premium"]
+)
+
+if construction_quality == "Basic":
+    LABOUR_RATE = 450
+    PAINT_RATE = 30
+    TILE_RATE = 200
+    DOOR_RATE = 8000
+    FLOORING_RATE = 120
+
+elif construction_quality == "Standard":
+    LABOUR_RATE = 550
+    PAINT_RATE = 40
+    TILE_RATE = 300
+    DOOR_RATE = 12000
+    FLOORING_RATE = 180
+
+else:  # Premium
+    LABOUR_RATE = 700
+    PAINT_RATE = 60
+    TILE_RATE = 500
+    DOOR_RATE = 20000
+    FLOORING_RATE = 350
 # ===== CALCULATIONS =====
 
 floor_area_m2 = plot_l * plot_w
@@ -231,6 +256,8 @@ if st.button("Calculate Estimate"):
         st.success(f"💰 Total Cost: ₹{total_cost:,.2f}")
         st.info(f"📏 Cost Per Sq Ft: ₹{cost_per_sqft:,.2f}")
 
+        st.write(f"🏠 Construction Quality: {construction_quality}")
+        
         st.subheader("📋 Project Summary")
 
         st.write(f"Plot Area: {floor_area_m2:.2f} m²")
