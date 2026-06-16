@@ -218,8 +218,13 @@ def estimator():
         labour_cost
     )
 
-    cost_per_sqft = total_cost / (builtup_m2 * 10.764)
-
+    if st.button("Calculate Estimate"):
+        if builtup_m2 <= 0:
+            st.error("Please enter valid dimensions and floors.")
+        else:
+            cost_per_sqft = total_cost / (builtup_m2 * 10.7639)
+            st.success(f"Total Cost: ₹{total_cost:,.2f}")
+            st.info(f"Cost per sq ft: ₹{cost_per_sqft:,.2f}")
     # ===== PROJECT SUMMARY =====
 
     st.subheader("\n========== PROJECT SUMMARY ==========")
