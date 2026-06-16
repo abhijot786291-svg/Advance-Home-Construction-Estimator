@@ -223,8 +223,9 @@ def estimator():
             st.error("Please enter valid dimensions and floors.")
         else:
             cost_per_sqft = total_cost / (builtup_m2 * 10.7639)
-            st.success(f"Total Cost: ₹{total_cost:,.2f}")
-            st.info(f"Cost per sq ft: ₹{cost_per_sqft:,.2f}")
+          
+        st.success(f"Total cost: ₹{total_cost:,.2f}") 
+        st.info(f"Cost per sq ft: ₹{cost_per_sqft:,.2f}")
     # ===== PROJECT SUMMARY =====
 
     st.subheader("\n========== PROJECT SUMMARY ==========")
