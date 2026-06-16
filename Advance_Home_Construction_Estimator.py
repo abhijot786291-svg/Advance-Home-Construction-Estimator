@@ -257,27 +257,4 @@ if st.button("Calculate Estimate"):
         st.write(f"Joinery Cost: ₹{joinery_cost:,.2f}")
         st.write(f"External Cost: ₹{external_cost:,.2f}")
         st.write(f"Labour Cost: ₹{labour_cost:,.2f}")
-        st.subheader("🔧 Detailed Items")
-
-st.write(f"Doors: {doors}")
-st.write(f"Windows: {windows}")
-st.write(f"Ventilators: {ventilators}")
-
-st.write(f"Switch Points: {switch_points}")
-st.write(f"Fan Points: {fan_points}")
-st.write(f"Light Points: {light_points}")
-st.write(f"Socket Points: {socket_points}")
-
-st.write(f"Water Points: {water_points}")
-st.write(f"Drain Points: {drain_points}")
-
-st.write(f"Wire Length: {wire_length:.2f} m")
-st.write(f"Pipeline Length: {pipe_length:.2f} m")
-
-st.write(f"Boundary Wall: {boundary_length:.2f} m")
-st.write(f"Gates: {gates}")
-
-st.subheader("🏁 Final Estimate")
-
-st.write(f"TOTAL COST : ₹{total_cost:,.2f}")
-st.write(f"COST PER SQ FT : ₹{cost_per_sqft:,.2f}")
+        
