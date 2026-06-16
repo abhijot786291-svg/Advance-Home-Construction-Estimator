@@ -45,9 +45,11 @@ BRICK_H = 0.09
 def estimator():
 
     print("\n===== ADVANCE HOME CONSTRUCTION ESTIMATOR =====")
+     
+    import streamlit as st
 
-    plot_l = float(input("Plot length (m): "))
-    plot_w = float(input("Plot width (m): "))
+    plot_l = float(st.number_input("Plot length (m): "))
+    plot_w = float(st.number_input("Plot width (m): "))
 
     floors = int(input("Number of floors: "))
     rooms = int(input("Number of rooms: "))
@@ -220,67 +222,67 @@ def estimator():
 
     # ===== PROJECT SUMMARY =====
 
-    print("\n========== PROJECT SUMMARY ==========")
+    st.subheader("\n========== PROJECT SUMMARY ==========")
 
-    print(f"Plot Area: {floor_area_m2:.2f} m²")
-    print(f"Built-up Area: {builtup_m2:.2f} m²")
+    st.write(f"Plot Area: {floor_area_m2:.2f} m²")
+    st.write(f"Built-up Area: {builtup_m2:.2f} m²")
 
-    print(f"Floors: {floors}")
-    print(f"Rooms: {rooms}")
-    print(f"Bathrooms: {bathrooms}")
+    st.write(f"Floors: {floors}")
+    st.write(f"Rooms: {rooms}")
+    st.write(f"Bathrooms: {bathrooms}")
 
-    print(f"Staircase Area: {staircase_area:.2f} m²")
-    print(f"Balcony Area: {balcony_area:.2f} m²")
+    st.write(f"Staircase Area: {staircase_area:.2f} m²")
+    st.write(f"Balcony Area: {balcony_area:.2f} m²")
 
     # ===== MATERIAL SUMMARY =====
 
-    print("\n========== MATERIAL SUMMARY ==========")
+    st.subheader("\n========== MATERIAL SUMMARY ==========")
 
-    print(f"Bricks Required : {int(bricks)} Nos")
-    print(f"Cement Required : {cement:.2f} Bags")
-    print(f"Sand Required   : {sand:.2f} m³")
-    print(f"Steel Required  : {steel_weight:.2f} kg")
-    print(f"Concrete Volume : {slab_volume:.2f} m³")
+    st.write(f"Bricks Required : {int(bricks)} Nos")
+    st.write(f"Cement Required : {cement:.2f} Bags")
+    st.write(f"Sand Required   : {sand:.2f} m³")
+    st.write(f"Steel Required  : {steel_weight:.2f} kg")
+    st.write(f"Concrete Volume : {slab_volume:.2f} m³")
 
     # ===== COST BREAKDOWN =====
 
-    print("\n========== COST BREAKDOWN ==========")
+    st.subheader("\n========== COST BREAKDOWN ==========")
 
-    print(f"Structural Cost : ₹{structural_cost:.2f}")
-    print(f"Masonry Cost    : ₹{masonry_cost:.2f}")
-    print(f"Finishing Cost  : ₹{finishing_cost:.2f}")
-    print(f"Electrical Cost : ₹{electrical_cost:.2f}")
-    print(f"Plumbing Cost   : ₹{plumbing_cost:.2f}")
-    print(f"Joinery Cost    : ₹{joinery_cost:.2f}")
-    print(f"External Cost   : ₹{external_cost:.2f}")
-    print(f"Labour Cost     : ₹{labour_cost:.2f}")
+    st.write(f"Structural Cost : ₹{structural_cost:.2f}")
+    st.write(f"Masonry Cost    : ₹{masonry_cost:.2f}")
+    st.write(f"Finishing Cost  : ₹{finishing_cost:.2f}")
+    st.write(f"Electrical Cost : ₹{electrical_cost:.2f}")
+    st.write(f"Plumbing Cost   : ₹{plumbing_cost:.2f}")
+    st.write(f"Joinery Cost    : ₹{joinery_cost:.2f}")
+    st.write(f"External Cost   : ₹{external_cost:.2f}")
+    st.write(f"Labour Cost     : ₹{labour_cost:.2f}")
 
     # ===== DETAILS =====
 
-    print("\n========== DETAILED ITEMS ==========")
+    st.subheader("\n========== DETAILED ITEMS ==========")
 
-    print(f"Doors           : {doors}")
-    print(f"Windows         : {windows}")
-    print(f"Ventilators     : {ventilators}")
+    st.write(f"Doors           : {doors}")
+    st.write(f"Windows         : {windows}")
+    st.write(f"Ventilators     : {ventilators}")
 
-    print(f"Switch Points   : {switch_points}")
-    print(f"Fan Points      : {fan_points}")
-    print(f"Light Points    : {light_points}")
-    print(f"Socket Points   : {socket_points}")
+    st.write(f"Switch Points   : {switch_points}")
+    st.write(f"Fan Points      : {fan_points}")
+    st.write(f"Light Points    : {light_points}")
+    st.write(f"Socket Points   : {socket_points}")
 
-    print(f"Water Points    : {water_points}")
-    print(f"Drain Points    : {drain_points}")
+    st.write(f"Water Points    : {water_points}")
+    st.write(f"Drain Points    : {drain_points}")
 
-    print(f"Wire Length     : {wire_length:.2f} m")
-    print(f"Pipeline Length : {pipe_length:.2f} m")
+    st.write(f"Wire Length     : {wire_length:.2f} m")
+    st.write(f"Pipeline Length : {pipe_length:.2f} m")
 
-    print(f"Boundary Wall   : {boundary_length:.2f} m")
-    print(f"Gates           : {gates}")
+    st.write(f"Boundary Wall   : {boundary_length:.2f} m")
+    st.write(f"Gates           : {gates}")
 
-    print("\n====================================")
-    print(f"TOTAL COST      : ₹{total_cost:.2f}")
-    print(f"COST PER SQ FT  : ₹{cost_per_sqft:.2f}")
-    print("====================================")
+    st.subheader("\n====================================")
+    st.write(f"TOTAL COST      : ₹{total_cost:.2f}")
+    st.write(f"COST PER SQ FT  : ₹{cost_per_sqft:.2f}")
+    st.write("====================================")
 
 
 estimator()
